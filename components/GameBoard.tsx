@@ -1,9 +1,14 @@
 'use client';
 import React, { useEffect, useState } from 'react';
+import GameTimer from './GameTimer';
+import MoveCounter from './MoveCounter';
 
 function GameBoard() {
     const [tiles, setTiles] = useState<(number | null)[]>([]);
     const solvedState = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, null];
+    const [isRunning, setIsRunning] = useState(false);
+    const [resetTimer, setResetTimer] = useState(false);
+    const [moves, setMoves] = useState(0);
 
     useEffect(() => {
         initializeTiles();
@@ -20,6 +25,9 @@ function GameBoard() {
         let numbers: (number | null)[] = Array.from({ length: 15 }, (_, i) => i + 1);
         numbers.push(null); // The empty space
         numbers = shuffle(numbers);
+        setResetTimer(true); // Reset time
+        setIsRunning(true); // Start the timer
+        setMoves(0);
         setTiles(numbers);
     }
 
@@ -48,12 +56,18 @@ function GameBoard() {
             newTiles[emptyIndex] = tiles[index];
             newTiles[index] = null;
             setTiles(newTiles);
+            setMoves(moves + 1);
+            if(!isRunning){
+                setIsRunning(true);
+            }
         }
     }
 
     function CheckWin() {
         if (tiles.length === 0) return false;
-        return tiles.every((tile, index) => tile === solvedState[index]);
+        if( tiles.every((tile, index) => tile === solvedState[index])){
+            return true;
+        }
     }
 
     function checkCorrectPositions() {
@@ -68,18 +82,36 @@ function GameBoard() {
     }
 
     return (
-        <div className="flex flex-wrap w-[400px] h-[400px] border border-white bg-gray-300 p-1 ">
-            {tiles.map((tile, index) => (
-                <div
-                    key={index}
-                    className={`w-[25%] h-[25%] flex items-center justify-center 
-                        text-2xl font-bold border-2 border-white m-0 tile
-                        ${tile ? 'bg-blue-500 text-white' : 'bg-gray-500'}`}
-                    onClick={() => moveTile(index)}
-                >
-                    {tile}
+        <div>
+            <div className='flex justify-between p-3'>
+                <button className='btn' onClick={initializeTiles}>new game</button>
+                <div className='flex items-center w-[40%] bg-purple-200 rounded'>
+                    <MoveCounter moves={moves}  />
+                    <GameTimer isRunning={isRunning} reset={resetTimer} />
                 </div>
-            ))}
+            </div>
+            <div className="flex flex-wrap w-[400px] h-[400px] border border-white p-3 m-2 rounded-xl bg-purple-500"> 
+                {tiles.map((tile, index) => (
+                    <div
+                        key={index}
+                        className={`w-[25%] h-[25%] flex items-center justify-center 
+                            text-2xl font-bold border-2 border-white m-0 tile
+                            ${tile ? 'bg-blue-500 text-white' : 'bg-gray-500'}`}
+                        onClick={() => moveTile(index)}
+                    >
+                        {tile}
+                    </div>
+                ))}
+            </div>
+            <div className='flex justify-center mt-4'>
+                <button 
+                    className='btn w-[80%]' 
+                    onClick={() => setIsRunning(!isRunning)}
+                >
+                    {isRunning ? 'Pause' : 'Start'}
+                </button>
+
+            </div>
         </div>
     );
 }

@@ -4,7 +4,9 @@ import GameBoard from '../../components/GameBoard'
 function page() {
   return (
     <div  className="home">
-      <GameBoard />
+      <div className='flex-container flex-center pt-4'>
+        <GameBoard />
+      </div>
     </div>
   )
 }
