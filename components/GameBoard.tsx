@@ -60,9 +60,9 @@ function GameBoard() {
         const tileDivs = document.querySelectorAll('.tile');
         tiles.forEach((tile, index) => {
             if (tile === solvedState[index]) {
-                tileDivs[index]?.classList.add('bg-green-500'); // Use optional chaining
+                tileDivs[index]?.classList.add('correctposition');
             } else {
-                tileDivs[index]?.classList.remove('bg-green-500');
+                tileDivs[index]?.classList.remove('correctposition');
             }
         });
     }
@@ -72,7 +72,7 @@ function GameBoard() {
             {tiles.map((tile, index) => (
                 <div
                     key={index}
-                    className={`w-[97px] h-[97px] flex items-center justify-center 
+                    className={`w-[25%] h-[25%] flex items-center justify-center 
                         text-2xl font-bold border-2 border-white m-0 tile
                         ${tile ? 'bg-blue-500 text-white' : 'bg-gray-500'}`}
                     onClick={() => moveTile(index)}
