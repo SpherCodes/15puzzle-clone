@@ -5,5 +5,4 @@ interface GameTimerProps {
 }
 interface MoveCounterProps{
     moves: number;
-    reset: boolean;
 }

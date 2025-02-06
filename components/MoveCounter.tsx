@@ -1,7 +1,7 @@
 import React from 'react';
 
 
-function MoveCounter({ moves = 0 , reset }: MoveCounterProps) {
+function MoveCounter({ moves = 0 }: MoveCounterProps) {
 
 
   return (

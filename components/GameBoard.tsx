@@ -23,10 +23,10 @@ function GameBoard() {
 
     function initializeTiles() {
         let numbers: (number | null)[] = Array.from({ length: 15 }, (_, i) => i + 1);
-        numbers.push(null); // The empty space
+        numbers.push(null);
         numbers = shuffle(numbers);
-        setResetTimer(true); // Reset time
-        setIsRunning(true); // Start the timer
+        setResetTimer(true);
+        setIsRunning(true);
         setMoves(0);
         setTiles(numbers);
     }
@@ -83,10 +83,11 @@ function GameBoard() {
 
     return (
         <div>
+            <h1 className="font-bold text-black flex justify-center items-center pb-10 text-4xl">15 Puzzle</h1>
             <div className='flex justify-between p-3'>
                 <button className='btn' onClick={initializeTiles}>new game</button>
                 <div className='flex items-center w-[40%] bg-purple-200 rounded'>
-                    <MoveCounter moves={moves}  />
+                    <MoveCounter moves={moves} />
                     <GameTimer isRunning={isRunning} reset={resetTimer} />
                 </div>
             </div>
