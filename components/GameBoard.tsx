@@ -83,20 +83,20 @@ function GameBoard() {
 
     return (
         <div>
-            <h1 className="font-bold text-black flex justify-center items-center pb-10 text-4xl">15 Puzzle</h1>
-            <div className='flex justify-between p-3'>
+            <h1 className="font-bold text-white flex justify-center items-center pb-10 text-4xl">15 Puzzle</h1>
+            <div className='flex justify-between p-3 h-16 text-xs '>
                 <button className='btn' onClick={initializeTiles}>new game</button>
-                <div className='flex items-center w-[40%] bg-purple-200 rounded'>
+                <div className='flex items-center justify-center w-[40%] rounded btn'>
                     <MoveCounter moves={moves} />
                     <GameTimer isRunning={isRunning} reset={resetTimer} />
                 </div>
             </div>
-            <div className="flex flex-wrap w-[400px] h-[400px] border border-white p-3 m-2 rounded-xl bg-purple-500"> 
+            <div className="flex flex-wrap w-[300px] h-[300px] p-5 m-2 gap-2"> 
                 {tiles.map((tile, index) => (
                     <div
                         key={index}
-                        className={`w-[25%] h-[25%] flex items-center justify-center 
-                            text-2xl font-bold border-2 border-white m-0 tile
+                        className={`w-[22%] h-[22%] flex items-center justify-center 
+                            text-2xl font-bold m-0 tile
                             ${tile ? 'bg-blue-500 text-white' : 'bg-gray-500'}`}
                         onClick={() => moveTile(index)}
                     >

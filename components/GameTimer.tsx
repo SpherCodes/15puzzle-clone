@@ -35,8 +35,8 @@ const GameTimer: React.FC<GameTimerProps> = ({ isRunning, reset }) => {
     };
 
     return (
-        <div className="text-l font-normal text-black p-1 rounded-md w-[40%] ml-auto w-1/2">
-            Time {formatTime(time)}
+        <div className="text-xs text-white p-1 rounded-md w-[40%] ml-auto w-1/2">
+            Time <span className='font-bold'>{formatTime(time)}</span>
         </div>
     );
 };

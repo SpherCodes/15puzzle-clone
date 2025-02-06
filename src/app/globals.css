@@ -9,8 +9,9 @@
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: #0a0a0a;
+    --background: #57407c;
     --foreground: #ededed;
+    --secondary-background-color:rgb(61, 41, 99);
   }
 }
 
@@ -22,11 +23,17 @@ body {
 }
 
 .home {
-  @apply bg-white flex justify-center items-center h-screen;
+  @apply flex justify-center items-center h-screen;
 }
 .correctposition{
   @apply bg-green-500 text-white font-bold py-2 px-4 rounded;
 }
 .btn{
-  @apply bg-purple-200 text-black font-normal py-2 px-4 rounded;
+  background-color: var(--secondary-background-color);
+  padding: .5em 1.5em;
+  border-radius: .4em;
+}
+.tile{
+  background-color: rgb(111, 189, 185);
+  border-radius: 10%;
 }
