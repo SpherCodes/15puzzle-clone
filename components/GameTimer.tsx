@@ -14,7 +14,7 @@ const GameTimer: React.FC<GameTimerProps> = ({ isRunning, reset }) => {
                 setTime(prevTime => prevTime + 1);
             }, 1000);
         } else if (!isRunning && time !== 0) {
-            clearInterval(interval as NodeJS.Timeout);
+            clearInterval(interval as unknown as NodeJS.Timeout);
         }
 
         return () => clearInterval(interval as NodeJS.Timeout);
