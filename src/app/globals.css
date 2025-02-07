@@ -9,7 +9,8 @@
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: rgb(87, 64, 124); 
+    --background: rgb(0, 0, 0); 
+    /* --background: rgb(87, 64, 124);  */
     --foreground: #ededed;
     --secondary-background-color:rgb(61, 41, 99);
   }
