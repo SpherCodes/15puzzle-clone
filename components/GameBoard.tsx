@@ -72,11 +72,12 @@ function GameBoard() {
 
     function checkCorrectPositions() {
         const tileDivs = document.querySelectorAll('.tile');
+        console.log(tileDivs)
         tiles.forEach((tile, index) => {
             if (tile === solvedState[index]) {
-                tileDivs[index]?.classList.add('correctposition');
+                tileDivs[index]?.classList.add('tile-correct');
             } else {
-                tileDivs[index]?.classList.remove('correctposition');
+                tileDivs[index]?.classList.remove('tile-correct');
             }
         });
     }
@@ -96,8 +97,8 @@ function GameBoard() {
                     <div
                         key={index}
                         className={`w-[22%] h-[22%] flex items-center justify-center 
-                            text-2xl font-bold m-0 tile
-                            ${tile ? 'bg-blue-500 text-white' : 'bg-gray-500'}`}
+                            text-2xl font-bold m-0 s
+                            ${tile ? 'tile' : 'tile-empty'}`}
                         onClick={() => moveTile(index)}
                     >
                         {tile}

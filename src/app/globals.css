@@ -37,3 +37,10 @@ body {
   background-color: rgb(111, 189, 185);
   border-radius: 10%;
 }
+.tile-empty{
+  background-color: var(--secondary-background-color);
+  border-radius: 10%;
+}
+.tile-correct{
+  background-color:rgb(232, 138, 69);
+}
