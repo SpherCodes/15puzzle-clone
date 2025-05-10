@@ -1,44 +1,36 @@
 'use client';
-import React, { useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 
+function GameTimer({ isRunning, reset }: { isRunning: boolean; reset: boolean }) {
+  const [time, setTime] = useState(0);
 
-const GameTimer: React.FC<GameTimerProps> = ({ isRunning, reset }) => {
-    const [time, setTime] = React.useState(0);
+  useEffect(() => {
+    let intervalId: NodeJS.Timeout;
+    if (isRunning) {
+      intervalId = setInterval(() => {
+        setTime((prevTime) => prevTime + 1);
+      }, 1000);
+    }
+    return () => clearInterval(intervalId);
+  }, [isRunning]);
 
-    // Timer logic to start/stop based on `isRunning`
-    useEffect(() => {
-        let interval: NodeJS.Timeout | null = null;
+  useEffect(() => {
+    if (reset) {
+      setTime(0);
+    }
+  }, [reset]);
 
-        if (isRunning) {
-            interval = setInterval(() => {
-                setTime(prevTime => prevTime + 1);
-            }, 1000);
-        } else if (!isRunning && time !== 0) {
-            clearInterval(interval as unknown as NodeJS.Timeout);
-        }
+  const minutes = Math.floor(time / 60);
+  const seconds = time % 60;
 
-        return () => clearInterval(interval as NodeJS.Timeout);
-    }, [isRunning,]);
-
-    // Reset timer when `reset` is true
-    useEffect(() => {
-        if (reset) {
-            setTime(0);
-        }
-    }, [reset]);
-
-    // Format time into minutes:seconds
-    const formatTime = (seconds: number) => {
-        const minutes = Math.floor(seconds / 60);
-        const secs = seconds % 60;
-        return `${minutes}:${secs < 10 ? '0' : ''}${secs}`;
-    };
-
-    return (
-        <div className="text-xs text-white p-1 rounded-md w-[40%] ml-auto w-1/2">
-            Time <span className='font-bold'>{formatTime(time)}</span>
-        </div>
-    );
-};
+  return (
+    <div className="flex-1 text-center">
+      <p className="text-sm text-foreground/70 mb-1">Time</p>
+      <p className="text-xl md:text-2xl font-bold">
+        {minutes.toString().padStart(2, '0')}:{seconds.toString().padStart(2, '0')}
+      </p>
+    </div>
+  );
+}
 
 export default GameTimer;

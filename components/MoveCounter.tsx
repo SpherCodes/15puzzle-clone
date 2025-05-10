@@ -1,13 +1,10 @@
 import React from 'react';
 
-
 function MoveCounter({ moves = 0 }: MoveCounterProps) {
-
-
   return (
-    <div className="text-center text-white p-3">
-      <h1 className="text-xs">Moves</h1>
-      <p className="text-xs font-bold">{moves}</p>
+    <div className="flex-1 text-center">
+      <p className="text-sm text-foreground/70 mb-1">Moves</p>
+      <p className="text-xl md:text-2xl font-bold">{moves}</p>
     </div>
   );
 }
