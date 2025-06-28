@@ -238,6 +238,6 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 Made with ❤️ using Next.js and React
 
-[🎮 Play Now](https://your-deployment-url.vercel.app) | [📖 Documentation](./DOCUMENTATION.md) | [🐛 Report Bug](https://github.com/yourusername/15-puzzle-game/issues)
+[🎮 Play Now](https://15puzzle-clone-t3uf.vercel.app/) | [📖 Documentation](./DOCUMENTATION.md) 
 
 </div>
