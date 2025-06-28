@@ -232,16 +232,6 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 - Built with amazing open-source technologies
 - Design inspired by modern glassmorphism trends
 
-## 📞 Support
-
-Having issues? Here's how to get help:
-
-- 🐛 **Bug Reports**: [Open an issue](https://github.com/yourusername/15-puzzle-game/issues)
-- 💡 **Feature Requests**: [Start a discussion](https://github.com/yourusername/15-puzzle-game/discussions)
-- 📧 **Contact**: your-email@example.com
-
----
-
 <div align="center">
 
 **[⬆ Back to Top](#-15-puzzle-game)**
